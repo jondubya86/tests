@@ -32,4 +32,4 @@ const VisibleTodoList = connect(
 	mapDispatchToProps
 )(TodoList)
 
-export default VisibileTodoList;
+export default VisibleTodoList;

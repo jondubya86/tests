@@ -11304,7 +11304,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-let store = Object(__WEBPACK_IMPORTED_MODULE_3_redux__["c" /* createStore */])(todoApp);
+let store = Object(__WEBPACK_IMPORTED_MODULE_3_redux__["c" /* createStore */])(__WEBPACK_IMPORTED_MODULE_5__reducers__["a" /* default */]);
 
 Object(__WEBPACK_IMPORTED_MODULE_1_react_dom__["render"])(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 	__WEBPACK_IMPORTED_MODULE_2_react_redux__["a" /* Provider */],
@@ -24991,7 +24991,7 @@ const mapDispatchToProps = dispatch => {
 
 const VisibleTodoList = Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_2__components_TodoList__["a" /* default */]);
 
-/* harmony default export */ __webpack_exports__["a"] = (VisibileTodoList);
+/* harmony default export */ __webpack_exports__["a"] = (VisibleTodoList);
 
 /***/ }),
 /* 232 */
@@ -25070,7 +25070,7 @@ const todoApp = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["b" /* combineReducer
 	visibilityFilter: __WEBPACK_IMPORTED_MODULE_2__visibilityFilter__["a" /* default */]
 });
 
-/* unused harmony default export */ var _unused_webpack_default_export = (todoApp);
+/* harmony default export */ __webpack_exports__["a"] = (todoApp);
 
 /***/ }),
 /* 235 */

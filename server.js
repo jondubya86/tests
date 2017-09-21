@@ -8,6 +8,8 @@ const app = express();
 //   res.status(err.status || 500).send(err.message || 'Internal server error.');
 // });
 
+app.use(express.static(path.join(__dirname, './front/bundle')));
+
 app.get('/*', function (req, res) {
   res.sendFile(path.resolve(__dirname, './front/index.html'))
 });
