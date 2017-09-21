@@ -24965,28 +24965,28 @@ AddTodo = Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["b" /* connect */])()
 
 
 const getVisibleTodos = (todos, filter) => {
-	switch (filter) {
-		case 'SHOW_ALL':
-			return todos;
-		case 'SHOW_COMPLETED':
-			return todos.filter(t => t.completed);
-		case 'SHOW_ACTIVE':
-			return todos.filter(t => t.completed);
-	}
+  switch (filter) {
+    case 'SHOW_ALL':
+      return todos;
+    case 'SHOW_COMPLETED':
+      return todos.filter(t => t.completed);
+    case 'SHOW_ACTIVE':
+      return todos.filter(t => !t.completed);
+  }
 };
 
 const mapStateToProps = state => {
-	return {
-		todos: getVisibleTodos(state.todos, state.visibilityFilter)
-	};
+  return {
+    todos: getVisibleTodos(state.todos, state.visibilityFilter)
+  };
 };
 
 const mapDispatchToProps = dispatch => {
-	return {
-		onTodoClick: id => {
-			dispatch(Object(__WEBPACK_IMPORTED_MODULE_1__actions__["c" /* toggleTodo */])(id));
-		}
-	};
+  return {
+    onTodoClick: id => {
+      dispatch(Object(__WEBPACK_IMPORTED_MODULE_1__actions__["c" /* toggleTodo */])(id));
+    }
+  };
 };
 
 const VisibleTodoList = Object(__WEBPACK_IMPORTED_MODULE_0_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(__WEBPACK_IMPORTED_MODULE_2__components_TodoList__["a" /* default */]);
@@ -25010,18 +25010,18 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 const TodoList = ({ todos, onTodoClick }) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-	'ul',
-	null,
-	todos.map(todo => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Todo__["a" /* default */], _extends({ key: todo.id }, todo, { onClick: () => onTodoClick(todo.id) })))
+  'ul',
+  null,
+  todos.map(todo => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Todo__["a" /* default */], _extends({ key: todo.id }, todo, { onClick: () => onTodoClick(todo.id) })))
 );
 
 TodoList.propTypes = {
-	todos: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.arrayOf(__WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.shape({
-		id: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.number.isRequired,
-		completed: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.bool.isRequired,
-		text: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string.isRequired
-	}).isRequired).isRequired,
-	onTodoClick: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func.isRequired
+  todos: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.arrayOf(__WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.shape({
+    id: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.number.isRequired,
+    completed: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.bool.isRequired,
+    text: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string.isRequired
+  }).isRequired).isRequired,
+  onTodoClick: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func.isRequired
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (TodoList);
@@ -25041,7 +25041,6 @@ TodoList.propTypes = {
 const Todo = ({ onClick, completed, text }) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 	'li',
 	{ onClick: onClick, style: { textDecoration: completed ? 'line-through' : 'none' } },
-	')',
 	text
 );
 
@@ -25078,18 +25077,18 @@ const todoApp = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["b" /* combineReducer
 
 "use strict";
 const todos = (state = [], action) => {
-	switch (action.type) {
-		case 'ADD_TODO':
-			return [...state, {
-				id: action.id,
-				text: action.text,
-				completed: false
-			}];
-		case 'TOGGLE_TODO':
-			return state.map(todo => todo.id === action.id ? Object.assign({}, todo.completed) : todo);
-		default:
-			return state;
-	}
+  switch (action.type) {
+    case 'ADD_TODO':
+      return [...state, {
+        id: action.id,
+        text: action.text,
+        completed: false
+      }];
+    case 'TOGGLE_TODO':
+      return state.map(todo => todo.id === action.id ? Object.assign({}, todo, { completed: !todo.completed }) : todo);
+    default:
+      return state;
+  }
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (todos);
