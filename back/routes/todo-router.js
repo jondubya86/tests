@@ -41,9 +41,6 @@ const todoRouter = () => {
 		})
 	};
 
-
-
-
 	router.route('/')
     .get(getAllTasks)
     .post(createTask);
