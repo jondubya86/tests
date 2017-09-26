@@ -1,12 +1,17 @@
 const express =require('express');
-const path = require('path');
 const app = express();
+const path = require('path');
+const bodyParser = require('body-parser');
 
-// app.use(function (err, req, res, next) {
-//   console.error(err);
-//   console.error(err.stack);
-//   res.status(err.status || 500).send(err.message || 'Internal server error.');
-// });
+//sequelize db
+const db = require('./back/models');
+const router = require('./back/routes');
+
+
+app.use(function (err, req, res, next) {
+  console.error(err);
+  res.status(err.status || 500).send(err.message || 'Internal server error.');
+});
 
 app.use(express.static(path.join(__dirname, './front/bundle')));
 
