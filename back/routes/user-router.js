@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const User = require('../models').User;
 const Todo = require('../models').Todo;
+// const translateErrors = require('../utilities/error-translator');
 
 const userRouter = () => {
 
@@ -9,25 +10,23 @@ const userRouter = () => {
 			attributes: {
 				exclude: ['password']
 			}
-		})
+		}).then((user) => {
+      res.send(user)
+    })
 	};
 
 	const createUser = (req, res) => {
+    console.log('LOOK JUNG', req.body)
 		const { username, password } = req.body;
-		const userData = { username, password };
-		console.log(req.body)
+		const userData = req.body
 		User.create(userData)
 		.then((user) => {
 			res.send(user);
     	})
     	.catch((err) => {
-      		const errors = err.errors;
-      		const errorMessages = { errorMessages: translateErrors(errors) };
-
-      		res.status(400).send(errorMessages)
+      		res.status(400).send(err)
     	});
   	};
-
 
   	const getOneUser = (req, res) => {
   		const userId = req.user.id;

@@ -13,14 +13,22 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500).send(err.message || 'Internal server error.');
 });
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, './front/bundle')));
+
+app.use('/api', router);
 
 app.get('/*', function (req, res) {
   res.sendFile(path.resolve(__dirname, './front/index.html'))
 });
 
-app.listen(process.env.PORT || 3000, () => {
-	console.log(`listening on port ${3000}`);
+db.sequelize.sync().then(() => {
+  const port = process.env.PORT || 3000;
+
+  app.listen(port, () => {
+    console.log(`Listening on port ${port}`);
+  });
 });
 
 module.exports = app;

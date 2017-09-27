@@ -14,31 +14,28 @@ const todoRouter = () => {
 		const { task, active, schedule } = req.body
 		const taskData = { task, active, schedule }
 
-		Task.create(taskData)
+		Todo.create(taskData)
 		.then((task) => {
 			res.send(task);
 		})
 		.catch((err) => {
-			const errors = err.errors;
-			const errorMessage = { errorMessages: translateError(errors) };
-
-			res.status(400).send(errorMessages)
+			res.status(400).send(err)
 		});
 	};
 
 	const getAllTasks = (req, res) => {
-		Task.findAll({
-      		attributes: {
-		    	include: [
-		    		{
-          				model: User,
-          				attributes: {
-            				exclude: ['password']
-          				}
-        			}
-      			]
-			}
-		})
+	  Todo.findAll({
+        attributes: {
+		  include: [
+		    {
+          	  model: User,
+          	  attributes: {
+                exclude: ['password']
+          	  }
+        	}
+      	  ]
+		}
+	  })
 	};
 
 	router.route('/')
